@@ -1,20 +1,111 @@
-# Microfrontends demo application
-As a part of this demo we have created five diffrent applications and they are working on diffrent ports as below
-1. components (This is first remote/child application and will run on port 3001)
-2. to-do-list (This is second remote/child application and will run on port 3002)
-3. Vue-app (This is third remote/child application created in vue.js and will run on port 3003).
-4. Js-app (This is fourth remote/child application created in vanilla js and will run on port 3004)
-5. MFApp (This is micro frontends host application and will run on port 3000).
+# Micro-Frontend Application Setup
 
-We are using components from all the four remotes applications in host application.
+This repository contains two micro-frontend applications (`airpriceIQ` and `cro-application`) along with a host application (`MFApp`). Follow the instructions below to run each application independently and integrate them into the micro-frontend host.
 
-## Steps to run
-1. First go to components folder, do npm install and then npm start (App will open in port 3001).
-2. Now go to to-do-list folder in another tab and do npm install and then npm start (App will open in port 3002).
-3. Now go to vue-app folder in another tab and do npm install and then npm start (App will open in port 3003).
-4. Now go to Js-app folder in another tab and do npm install and then npm start (App will open in port 3004).
-5. Now go to MFApp folder in third tab and do npm install and then npm start (App will open in port 3000).
-6. You will see components from all four child applications are used in host application.
+---
 
-### Demo link urls
-1. https://youtu.be/0The586wsiY?feature=shared
+## Folder Structure
+
+```
+├── airpriceIQ
+├── cro-application
+└── MFApp
+```
+
+---
+
+## Step 1: Setup Individual Applications
+
+### 1. Setup airpriceIQ Application
+
+Navigate to the `airpriceIQ` folder:
+
+```bash
+cd airpriceIQ
+```
+
+Install dependencies:
+
+```bash
+yarn install
+```
+
+Start the React application:
+
+```bash
+yarn start
+```
+
+The airpriceIQ application will run on `http://localhost:3001`
+
+### 2. Setup CRO Application
+
+Navigate to the `cro-application` folder:
+
+```bash
+cd cro-application
+```
+
+Install dependencies:
+
+```bash
+yarn install
+```
+
+Start the React application:
+
+```bash
+yarn start
+```
+
+The CRO application will run on `http://localhost:3002`
+
+---
+
+## Step 2: Setup and Run Host Application (MFApp)
+
+Navigate to the `MFApp` folder:
+
+```bash
+cd MFApp
+```
+
+Install dependencies:
+
+```bash
+yarn install
+```
+
+Start the host application:
+
+```bash
+yarn start
+```
+
+The MFApp application will run on `http://localhost:3000`
+
+---
+
+## Accessing Applications
+
+Once the MFApp (shell application) is running, use the provided navigation buttons to load either the `airpriceIQ` or `CRO` applications.
+
+Ensure both micro-frontends are running simultaneously so that the host application can load their content correctly.
+
+---
+
+## Troubleshooting
+
+- If ports conflict, consider changing the port number in respective application's `package.json` scripts:
+
+Example:
+
+```json
+"scripts": {
+    "start": "PORT=3003 react-scripts start"
+}
+```
+
+---
+
+### You're all set! 🎉
