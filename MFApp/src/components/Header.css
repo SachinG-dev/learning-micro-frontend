@@ -1,0 +1,72 @@
+.header {
+  background-color: #700000; /* Darker red for better contrast */
+  padding: 10px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 24px; /* Large text for accessibility */
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-list li {
+  margin-right: 20px;
+}
+
+.nav-list li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-list li a:not(.active):hover {
+  color: #ccc;
+}
+
+.nav-list li a.active {
+  font-weight: bold;
+}
+
+.nav-list li a {
+  font-size: 16px; /* Normal text, may need contrast adjustment */
+}
+
+.user-info {
+  position: relative;
+}
+
+.user-icon {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+  }
+  .nav-list li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
