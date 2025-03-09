@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -46,8 +46,14 @@ const occupancyData = flightDetails.map((flight) => ({
   occupancy: flight.occupancy,
 }));
 
-const CroHome = ({ title }) => {
+const CroHome = ({ title, flightCodeFromParent, setFlightCodeFromParent }) => {
   const [selectedFlight, setSelectedFlight] = useState(null);
+  useEffect(() => {
+    if (selectedFlight !== flightCodeFromParent) {
+      setSelectedFlight(flightCodeFromParent);
+    }
+    console.log({ flightCodeFromParent, setFlightCodeFromParent });
+  }, [flightCodeFromParent]);
 
   return (
     <div
@@ -82,7 +88,14 @@ const CroHome = ({ title }) => {
                   <input
                     type="radio"
                     name="flight"
-                    onChange={() => setSelectedFlight(flight.flightNo)}
+                    value={flight.flightNo}
+                    checked={flight.flightNo === selectedFlight}
+                    onChange={() => {
+                      setSelectedFlight(flight.flightNo);
+                      if (setFlightCodeFromParent) {
+                        setFlightCodeFromParent(flight.flightNo);
+                      }
+                    }}
                   />
                   <strong style={{ marginLeft: "8px" }}>
                     {flight.flightNo}

@@ -1,13 +1,19 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 
 const CroApplication = lazy(() => import("CRO_APPLICATION_HOST/CroHome"));
 
-const CRO_APPLICATION = () => {
+const CroApplicationPage = ({ selectedFlightCode, setSelectedFlightCode }) => {
   return (
     <div className="container">
-      <CroApplication />
+      <Suspense fallback="loading">
+        <CroApplication
+          title="Cro Application"
+          flightCodeFromParent={selectedFlightCode}
+          setFlightCodeFromParent={setSelectedFlightCode}
+        />
+      </Suspense>
     </div>
   );
 };
 
-export default CRO_APPLICATION;
+export default CroApplicationPage;

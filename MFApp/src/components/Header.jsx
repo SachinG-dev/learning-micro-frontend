@@ -33,10 +33,18 @@ const Header = ({ user }) => {
         <ul className="nav-list">
           <li>
             <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/cro-application"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              CRO Home
+              CRO
             </NavLink>
           </li>
           <li>
@@ -49,10 +57,18 @@ const Header = ({ user }) => {
           </li>
           <li>
             <NavLink
-              to="/new"
+              to="/cro-and-air-price-iq"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              New Option
+              Both Together
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/cro-and-air-price-iq-communicate"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Both Talk
             </NavLink>
           </li>
         </ul>

@@ -7,7 +7,7 @@ const layout = (props) => {
   return (
     <>
       <Header cart={props.cart} />
-      <div style={{ height: "87vh" }}>
+      <div style={{ height: "auto" }}>
         <Outlet />
       </div>
 

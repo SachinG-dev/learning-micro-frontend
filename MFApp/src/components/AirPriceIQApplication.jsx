@@ -1,11 +1,20 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 
 const AirPriceIQ = lazy(() => import("AIR_PRICE_IQ_HOST/AirPriceIQHome"));
 
-const AirPriceIQApplication = () => {
+const AirPriceIQApplication = ({
+  selectedFlightCode,
+  setSelectedFlightCode,
+}) => {
   return (
     <div className="container">
-      <AirPriceIQ />
+      <Suspense fallback="loading">
+        <AirPriceIQ
+          title="Air Price IQ"
+          flightCodeFromParent={selectedFlightCode}
+          setFlightCodeFromParent={setSelectedFlightCode}
+        />
+      </Suspense>
     </div>
   );
 };

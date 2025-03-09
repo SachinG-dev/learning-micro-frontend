@@ -8,6 +8,8 @@ import NotFound from "./components/NotFound.jsx";
 
 import "./style.css";
 import ShellHomePage from "./components/ShellHomePage.jsx";
+import { BothApplicationTogether } from "./components/BothApplicationTogether.jsx";
+import { BothApplicationCommunicationWithEachOther } from "./components/BothApplicationCommunicationWithEachOther.jsx";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -46,10 +48,14 @@ const App = () => {
           path: "/air-price-iq",
           element: <AirPriceIQApplication />,
         },
-        // {
-        //   path: "/to-do-app",
-        //   element: <ProductList  cart={cartItems} />
-        // }
+        {
+          path: "/cro-and-air-price-iq",
+          element: <BothApplicationTogether />,
+        },
+        {
+          path: "/cro-and-air-price-iq-communicate",
+          element: <BothApplicationCommunicationWithEachOther />,
+        },
       ],
     },
   ]);

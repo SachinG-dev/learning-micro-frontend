@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -17,8 +17,19 @@ const airlinePrices = [
   { flightCode: "UK-404", airline: "Vistara", price: 4900 },
 ];
 
-const AirPriceIQHome = ({ title }) => {
+const AirPriceIQHome = ({
+  title,
+  flightCodeFromParent,
+  setFlightCodeFromParent,
+}) => {
   const [selectedFlight, setSelectedFlight] = useState(null);
+  console.log({ flightCodeFromParent, setFlightCodeFromParent });
+  useEffect(() => {
+    if (selectedFlight !== flightCodeFromParent) {
+      setSelectedFlight(flightCodeFromParent);
+    }
+    console.log({ flightCodeFromParent, setFlightCodeFromParent });
+  }, [flightCodeFromParent]);
 
   return (
     <div
@@ -53,7 +64,14 @@ const AirPriceIQHome = ({ title }) => {
                   <input
                     type="radio"
                     name="flight"
-                    onChange={() => setSelectedFlight(flight.flightCode)}
+                    value={flight.flightCode}
+                    checked={flight.flightCode === selectedFlight}
+                    onChange={() => {
+                      setSelectedFlight(flight.flightCode);
+                      if (setFlightCodeFromParent) {
+                        setFlightCodeFromParent(flight.flightCode);
+                      }
+                    }}
                   />
                   <strong style={{ marginLeft: "8px" }}>
                     {flight.flightCode}
